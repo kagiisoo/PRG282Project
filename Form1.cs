@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
 
 namespace PRG282Project
 {
@@ -41,6 +43,46 @@ namespace PRG282Project
             myTable.Rows.Add(txtStudentID.Text, txtName.Text, txtAge.Text, txtCourse.Text);
 
             dataGridView1.DataSource = myTable;
+
+            if(txtStudentID is null || txtName is null || txtAge is null || txtCourse is null)
+            {
+                MessageBox.Show("Please fill in all fields.", "Error");
+                return;
+            }
+
+            string studentRecord = $"{txtStudentID},{txtName},{txtAge},{txtCourse}";
+
+            //string path = "students.txt";
+
+            try
+            {
+                // Append the student data to students.txt
+                using (StreamWriter writer = new StreamWriter("students.txt", true))
+                {
+                    writer.WriteLine(studentRecord);
+                }
+
+                MessageBox.Show("Student saved successfully!", "Success");
+
+                // Clear the input fields after saving
+                ClearFields();
+               
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors that occur while saving
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        private void ClearFields()
+        {
+            txtStudentID.Clear();
+            txtName.Clear();
+            txtAge.Clear();
+            txtCourse.Clear();
+        }
+
     }
 }
+
