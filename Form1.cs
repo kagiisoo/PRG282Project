@@ -30,6 +30,7 @@ namespace PRG282Project
 
 
             myTable.Rows.Add(600836, "Kagiso Sebati", 20, "PRG281");
+            myTable.Rows.Add(36564, "KSUHUH JSDHIU", 43, "UIUWU7");
 
             dataGridView1.DataSource = myTable;
 
