@@ -1,72 +1,43 @@
- public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+# Student Management System
 
-        DataTable myTable = new DataTable();
+This is a student management system built with C# and Windows Forms. It allows users to add, view, update, and delete student records, as well as generate summary reports.
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            myTable.Columns.Add("StudentID", typeof(int));
-            myTable.Columns.Add("Name", typeof(string));
-            myTable.Columns.Add("Age", typeof(int));
-            myTable.Columns.Add("Course", typeof(string));
+## Technologies Used
+- C#
+- Windows Forms
+- Git and GitHub for version control
+- StreamWriter for saving data to text files
 
+## Installation
 
-            myTable.Rows.Add(600836, "Kagiso Sebati", 20, "PRG281");
-            myTable.Rows.Add(36564, "KSUHUH JSDHIU", 43, "UIUWU7");
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/kagiisoo/student-management-system.git
+    ```
+2. Open the solution in Visual Studio.
+3. Build and run the application.
 
-            dataGridView1.DataSource = myTable;
+## Features
+- Add new student records.
+- View all students in a DataGridView.
+- Update student information by ID.
+- Delete student records.
+- Generate a summary report with total students and average age.
 
-        }
+## Usage
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            myTable.Rows.Add(txtStudentID.Text, txtName.Text, txtAge.Text, txtCourse.Text);
+1. Open the application.
+2. To add a student, fill in the student details and click "Add Student".
+3. View all students in the DataGridView.
+4. Use the search functionality to find a student by ID and update their details.
+5. Delete a student by selecting the student from the list and clicking "Delete Student".
+6. View the summary report in the "Summary" section.
 
-            dataGridView1.DataSource = myTable;
+## Contributing
 
-            if(txtStudentID is null || txtName is null || txtAge is null || txtCourse is null)
-            {
-                MessageBox.Show("Please fill in all fields.", "Error");
-                return;
-            }
-
-            string studentRecord = $"{txtStudentID},{txtName},{txtAge},{txtCourse}";
-
-            //string path = "students.txt";
-
-            try
-            {
-                // Append the student data to students.txt
-                using (StreamWriter writer = new StreamWriter("students.txt", true))
-                {
-                    writer.Write(studentRecord);
-                }
-
-                MessageBox.Show("Student saved successfully!", "Success");
-
-                // Clear the input fields after saving
-                ClearFields();
-               
-            }
-            catch (Exception ex)
-            {
-                // Handle any errors that occur while saving
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ClearFields()
-        {
-            txtStudentID.Clear();
-            txtName.Clear();
-            txtAge.Clear();
-            txtCourse.Clear();
-        }
-
-    }
-}
+1. Fork the repository.
+2. Create a new branch for your feature (e.g., `git checkout -b feature/your-feature`).
+3. Commit your changes (e.g., `git commit -m 'Add new feature'`).
+4. Push to the branch (e.g., `git push origin feature/your-feature`).
+5. Create a pull request.
 
