@@ -31,8 +31,11 @@ namespace PRG282Project
             myTable.Columns.Add("Course", typeof(string));
 
 
-            myTable.Rows.Add(600836, "Kagiso Sebati", 20, "PRG281");
-            myTable.Rows.Add(36564, "KSUHUH JSDHIU", 43, "UIUWU7");
+            myTable.Rows.Add(36564, "Tshegofatso Mashego", 21, "PRG281");
+            myTable.Rows.Add(36564, "Onthatile Mapheto", 20, "WPR281");
+            myTable.Rows.Add(36564, "Dariin Mokuena", 19, "SAD281");
+            myTable.Rows.Add(36564, "Kagiso Sebati", 22, "IOT281");
+          
 
             dataGridView1.DataSource = myTable;
 
@@ -59,7 +62,7 @@ namespace PRG282Project
                 // Append the student data to students.txt
                 using (StreamWriter writer = new StreamWriter("students.txt", true))
                 {
-                    writer.WriteLine(studentRecord);
+                    writer.Write(studentRecord);
                 }
 
                 MessageBox.Show("Student saved successfully!", "Success");
