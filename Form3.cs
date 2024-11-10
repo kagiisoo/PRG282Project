@@ -20,7 +20,7 @@ namespace PRG282Project
 
         private void LoadSummaryReport()
         {
-            string filePath = "students.txt";
+            string filePath = @"C:\Users\darri\Source\Repos\kagiisoo\PRG282Project\students.txt";
             List<Student> students = new List<Student>();
 
             // Read student data from the file
@@ -56,9 +56,10 @@ namespace PRG282Project
 
             dataGridViewSummary.Rows.Add("Total Students", totalStudents);
             dataGridViewSummary.Rows.Add("Average Age", averageAge);
+            
 
             // Save summary to summary.txt
-            File.WriteAllText("summary.txt", $"Total Students: {totalStudents}\nAverage Age: {averageAge:F2}");
+            File.WriteAllText(@"C:\Users\darri\Source\Repos\kagiisoo\PRG282Project\summary.txt", $"Total Students: {totalStudents}\nAverage Age: {averageAge:F2}");
         }
     }
 
