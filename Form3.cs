@@ -23,7 +23,7 @@ namespace PRG282Project
             string filePath = @"C:\Users\darri\Source\Repos\kagiisoo\PRG282Project\students.txt";
             List<Student> students = new List<Student>();
 
-            // Read student data from the file
+           
             if (File.Exists(filePath))
             {
                 var lines = File.ReadAllLines(filePath);
@@ -31,7 +31,7 @@ namespace PRG282Project
                 {
                     var data = line.Split(',');
 
-                    if (data.Length == 4 && int.TryParse(data[2], out int age)) // Ensure all fields are valid
+                    if (data.Length == 4 && int.TryParse(data[2], out int age)) 
                     {
                         students.Add(new Student
                         {
@@ -44,11 +44,11 @@ namespace PRG282Project
                 }
             }
 
-            // Calculate summary data
+           
             int totalStudents = students.Count;
             double averageAge = students.Count > 0 ? students.Average(s => s.Age) : 0;
 
-            // Display summary data in DataGridView
+           
             dataGridViewSummary.Rows.Clear();
             dataGridViewSummary.Columns.Clear();
             dataGridViewSummary.Columns.Add("Metric", "Metric");
@@ -58,12 +58,12 @@ namespace PRG282Project
             dataGridViewSummary.Rows.Add("Average Age", averageAge);
             
 
-            // Save summary to summary.txt
+           
             File.WriteAllText(@"C:\Users\darri\Source\Repos\kagiisoo\PRG282Project\summary.txt", $"Total Students: {totalStudents}\nAverage Age: {averageAge:F2}");
         }
     }
 
-    // Define the Student class if not already defined elsewhere in the project
+
     public class Student
     {
         public int StudentID { get; set; }
